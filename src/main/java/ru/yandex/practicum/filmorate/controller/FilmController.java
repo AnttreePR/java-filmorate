@@ -1,5 +1,7 @@
 package ru.yandex.practicum.filmorate.controller;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @RestController
 @RequestMapping("/films")
 public class FilmController {
@@ -87,7 +89,13 @@ public class FilmController {
             films.put(oldFilm.getId(), oldFilm);
             return oldFilm;
         }
-        throw new NotFoundException("Фильм с id = " + newFilm.getId() + " не найден");
+        throw new NotFoundException(String.format("Фильм с id = %d не найден", newFilm.getId()));
+        /* но я не согласен что
+           throw new NotFoundException(String.format("Фильм с id = %d не найден", newFilm.getId()));
+           читабельней чем
+           throw new NotFoundException("Фильм с id = " + newFilm.getId() + " не найден");
+           :(
+         */
 
     }
 
