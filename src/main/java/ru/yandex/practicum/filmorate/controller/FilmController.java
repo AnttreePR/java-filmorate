@@ -20,9 +20,9 @@ import java.util.Map;
 public class FilmController {
     private long nextId = 1;
 
-    private final static Logger log = LoggerFactory.getLogger(FilmController.class);
+    private static final  Logger log = LoggerFactory.getLogger(FilmController.class);
 
-    private final static LocalDate CINEMA_BIRTH_DATE = LocalDate.of(1895, 12, 28);
+    private static final LocalDate CINEMA_BIRTH_DATE = LocalDate.of(1895, 12, 28);
 
     private final Map<Long, Film> films = new HashMap<>();
 
